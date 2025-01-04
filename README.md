@@ -236,3 +236,90 @@ export { add } from "./math.js"; // Re-exports only 'add'
 - **Re-exporting**: Use `export * from` or `export { ... } from` to re-export items from other modules.
 
 Depending on your project setup (whether you're using ES Modules or CommonJS), the syntax for importing and exporting will differ slightly, but the concepts are largely the same.
+
+#### 3)What is fs (File System) module in Node.js
+
+The `fs` (File System) module in Node.js provides an API for interacting with the file system. It allows you to read from and write to files, as well as perform other file operations like creating, deleting, or renaming files and directories. This module is part of Node.js's core, so you don't need to install it separately.
+
+### Key Features of the `fs` module:
+
+1. **Reading Files**: You can read file contents using functions like `fs.readFile()` (asynchronous) or `fs.readFileSync()` (synchronous).
+2. **Writing Files**: You can write to files with `fs.writeFile()` or `fs.writeFileSync()`.
+3. **File and Directory Manipulation**: Operations such as renaming, deleting, and creating files or directories are available.
+4. **File Metadata**: Retrieve information about files, such as stats (size, creation time, etc.) using `fs.stat()` or `fs.lstat()`.
+5. **Streams**: The `fs` module also works with streams, allowing you to read from or write to files incrementally, which is useful for large files.
+
+### Basic Usage Examples:
+
+#### Asynchronous File Reading
+
+```js
+const fs = require("fs");
+
+fs.readFile("example.txt", "utf8", (err, data) => {
+  if (err) throw err;
+  console.log(data);
+});
+```
+
+#### Synchronous File Reading
+
+```js
+const fs = require("fs");
+
+try {
+  const data = fs.readFileSync("example.txt", "utf8");
+  console.log(data);
+} catch (err) {
+  console.error(err);
+}
+```
+
+#### Writing to a File
+
+```js
+const fs = require("fs");
+
+fs.writeFile("example.txt", "Hello, World!", "utf8", (err) => {
+  if (err) throw err;
+  console.log("File has been saved!");
+});
+```
+
+#### Creating a Directory
+
+```js
+const fs = require("fs");
+
+fs.mkdir("newDir", (err) => {
+  if (err) throw err;
+  console.log("Directory created!");
+});
+```
+
+#### File Stats
+
+```js
+const fs = require("fs");
+
+fs.stat("example.txt", (err, stats) => {
+  if (err) throw err;
+  console.log(stats);
+});
+```
+
+The `fs` module is essential for working with the file system in Node.js and is commonly used in backend applications for tasks like logging, file uploads, and data storage.
+
+Here are 5 practice questions to help you improve your understanding of the `fs` module in Node.js:
+
+1. **Question**: Explain the difference between the asynchronous and synchronous versions of `fs.readFile()` and `fs.writeFile()`. When would you prefer one over the other?
+
+2. **Question**: You need to check if a file exists before attempting to read it. How would you go about doing this using the `fs` module? What method would you use to check if a directory exists?
+
+3. **Question**: How can you append data to an existing file without overwriting its current contents? Explain which method of the `fs` module you would use for this task.
+
+4. **Question**: What would happen if you attempt to read a file that does not exist using the asynchronous `fs.readFile()` method? How would you handle this scenario in a Node.js application?
+
+5. **Question**: You need to list all files in a directory. How would you do this using the `fs` module? What method would you use to retrieve file names from a directory, and how would you handle errors?
+
+These questions will help you practice working with the file system and understanding different file operations in Node.js.
