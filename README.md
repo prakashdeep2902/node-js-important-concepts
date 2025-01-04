@@ -581,7 +581,7 @@ Here are the most important functions in the `http` module:
 
 In summary, the `http` module is a fundamental building block for creating HTTP servers and handling HTTP requests in Node.js applications. It provides a straightforward API to interact with clients and servers on the web.
 
-# Q5) What is the path module and important functions in the path module;
+# Q5) What is the path module and its explain most important function
 
 The `path` module in Node.js provides utilities for working with file and directory paths. It helps in handling and manipulating file paths across different operating systems in a consistent manner, avoiding errors due to platform-specific path syntax (e.g., using `/` in Linux/macOS vs. `\` in Windows).
 
