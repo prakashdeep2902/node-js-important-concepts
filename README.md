@@ -1,4 +1,4 @@
-**_ Q1) what is module in nodejs _**
+#### Q1) what is module in nodejs
 
 In Node.js, a **module** is a reusable block of code that you can export and import into other files to organize and manage your application. Each file in a Node.js application is treated as a separate module.
 
