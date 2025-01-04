@@ -71,7 +71,7 @@ Modules allow you to:
 
 By using modules, you can build scalable and maintainable Node.js applications! If you're already familiar with Express.js, you've likely worked with modules when importing middleware or routes.
 
-#### Q2) how many ways to export and import modules
+# Q2) how many ways to export and import modules
 
 In JavaScript, there are several ways to export and import modules, both in **CommonJS** and **ES Modules (ESM)** syntax. Here's a breakdown of the different types of exports you can use in both styles:
 
@@ -237,7 +237,7 @@ export { add } from "./math.js"; // Re-exports only 'add'
 
 Depending on your project setup (whether you're using ES Modules or CommonJS), the syntax for importing and exporting will differ slightly, but the concepts are largely the same.
 
-#### 3)What is fs (File System) module in Node.js
+# Q3) What is fs (File System) module in Node.js
 
 The `'fs'` module in Node.js is a core module that provides an API for interacting with the file system, allowing you to read from, write to, and manipulate files and directories on your computer. It's widely used for performing I/O operations (input/output) in both synchronous and asynchronous ways.
 
@@ -472,7 +472,7 @@ Here’s a summary of the most important functions in the `fs` module:
 
 These functions are central to working with files in Node.js, allowing both asynchronous (non-blocking) and synchronous (blocking) operations. You can choose between them depending on the need for performance (asynchronous) or simplicity (synchronous).
 
-#### 3)What is The http module in Node.js
+# Q4) What is The http module in Node.js
 
 The `http` module in Node.js is a core module that allows you to create and manage HTTP servers and make HTTP requests. It provides utilities to work with both incoming requests and outgoing responses, making it essential for building web servers and client-side applications.
 
