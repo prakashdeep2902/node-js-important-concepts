@@ -3,6 +3,7 @@
 import path from "path";
 import url from "url";
 import fs from "fs";
+import os from "os";
 
 const fileUrl = url.fileURLToPath(import.meta.url);
 const ThreeStepBackfile = path.join(fileUrl, "..", "..", "..");
@@ -32,4 +33,4 @@ async function readingAndDumpingData() {
   }
 }
 
-readingAndDumpingData();
+// readingAndDumpingData();
