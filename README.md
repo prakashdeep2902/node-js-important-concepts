@@ -1118,5 +1118,5 @@ console.log(url.resolve("https://example.com/path/", "page"));
    const baseUrl = new URL("https://nobroker.com");
    baseUrl.pathname = "/jobs";
    baseUrl.searchParams.append("role", "backend");
-   console.log(baseUrl.toString()); // 'https://nobroker.com/jobs?role=backend'
+   console.log(baseUrl.toString()); // 'https://nobroker.com/jobs?role=backend    git status'
    ```
