@@ -1120,3 +1120,108 @@ console.log(url.resolve("https://example.com/path/", "page"));
    baseUrl.searchParams.append("role", "backend");
    console.log(baseUrl.toString()); // 'https://nobroker.com/jobs?role=backend    git status'
    ```
+
+# Q10) What is Express.js?
+
+Express.js is a **minimal and flexible Node.js framework** that helps you build web applications and APIs quickly and efficiently. It provides tools and features to handle routes, middleware, HTTP requests, and responses.
+
+---
+
+### How to Use Express.js:
+
+1. **Install Express.js**:
+
+   ```bash
+   npm install express
+   ```
+
+2. **Create a Simple Server**:
+
+   ```javascript
+   const express = require("express");
+   const app = express();
+
+   app.get("/", (req, res) => {
+     res.send("Hello, World!");
+   });
+
+   app.listen(3000, () => {
+     console.log("Server is running on port 3000");
+   });
+   ```
+
+3. **Run the Server**:
+   ```bash
+   node server.js
+   ```
+   - Open your browser at `http://localhost:3000` to see the output.
+
+---
+
+### Important Functions in Express.js:
+
+1. **`app.listen(port, callback)`**
+
+   - Starts the server on the specified port.  
+     Example:
+
+   ```javascript
+   app.listen(3000, () => console.log("Server running on port 3000"));
+   ```
+
+2. **`app.get(route, callback)`**
+
+   - Handles GET requests for a route.  
+     Example:
+
+   ```javascript
+   app.get("/", (req, res) => res.send("GET Request"));
+   ```
+
+3. **`app.post(route, callback)`**
+
+   - Handles POST requests.  
+     Example:
+
+   ```javascript
+   app.post("/data", (req, res) => res.send("POST Request"));
+   ```
+
+4. **`app.use(middleware)`**
+
+   - Adds middleware to process requests.  
+     Example:
+
+   ```javascript
+   app.use(express.json()); // Parse JSON request body
+   ```
+
+5. **`app.route(path)`**
+
+   - Chain multiple HTTP methods for the same path.  
+     Example:
+
+   ```javascript
+   app
+     .route("/user")
+     .get((req, res) => res.send("GET User"))
+     .post((req, res) => res.send("POST User"));
+   ```
+
+6. **`res.send()` / `res.json()`**
+   - Sends responses back to the client.  
+     Example:
+   ```javascript
+   res.send("Plain text");
+   res.json({ message: "JSON Response" });
+   ```
+
+---
+
+### Why Use Express.js?
+
+- **Easy Routing**: Define how the server responds to different URLs.
+- **Middleware**: Handle requests like logging, authentication, or parsing data.
+- **Lightweight**: It's simple but powerful for building REST APIs or web apps.
+
+Start with small projects like building a login flow or a simple REST API!
