@@ -917,7 +917,7 @@ Node.js uses modules like:
 
 ---
 
-Would you like me to create a visual representation of this architecture or dive deeper into any specific part, like how the event loop phases work?
+![eventLoop](https://github.com/user-attachments/assets/8bbf449d-5393-4180-a059-7a209d89ab22)
 
 # Q8) is node js architecture same as event loop in js
 
