@@ -2,16 +2,21 @@
   "name": "js-important-concepts",
   "version": "1.0.0",
   "description": "All important concept of nodejs",
-  "main": "index.js",
+  "main": "expressServer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon expressFile/expressServer.js"
   },
   "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.21.2",
     "mongodb": "^6.12.0",
     "mysql2": "^3.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
