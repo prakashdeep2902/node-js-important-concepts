@@ -916,8 +916,8 @@ Node.js uses modules like:
 5. **Response**: Sent back to the client.
 
 ---
-![WhatsApp Image 2024-12-25 at 5 23 46 PM](https://github.com/user-attachments/assets/78e23086-3e4b-4736-9f50-e5aa06120bce)
 
+![eventLoop](https://github.com/user-attachments/assets/8bbf449d-5393-4180-a059-7a209d89ab22)
 
 # Q8) is node js architecture same as event loop in js
 
