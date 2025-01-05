@@ -977,3 +977,146 @@ The **event loop** is a central concept in both Node.js and JavaScript. It's res
 - While the **core event loop** concept is the same in both environments, Node.js extends it to meet the demands of server-side programming.
 
 Would you like a deeper dive into how Node.js phases of the event loop work? Or perhaps a diagram comparing both?
+
+# Q9) what is URL in NodJS (Uniform Resource Locator)
+
+The `url` module in JavaScript (Node.js) is a built-in module that provides utilities for URL resolution and parsing. It helps you work with URLs by breaking them into their components, modifying them, or creating new URLs.
+
+Here’s a detailed explanation of its functions:
+
+---
+
+### **Importing the URL Module**
+
+You can import the `url` module in two ways:
+
+```javascript
+// CommonJS
+const url = require("url");
+
+// ES Module
+import { URL, URLSearchParams } from "url";
+```
+
+---
+
+### **Key Classes and Functions**
+
+#### 1. **`URL` Class**
+
+- Represents and manipulates URLs.
+- Works only with absolute URLs.
+- Parses the URL and provides easy access to its components.
+
+**Example:**
+
+```javascript
+const myUrl = new URL(
+  "https://example.com:8000/path/page?name=prakash&age=25#section"
+);
+
+console.log(myUrl.protocol); // 'https:'
+console.log(myUrl.hostname); // 'example.com'
+console.log(myUrl.port); // '8000'
+console.log(myUrl.pathname); // '/path/page'
+console.log(myUrl.search); // '?name=prakash&age=25'
+console.log(myUrl.hash); // '#section'
+console.log(myUrl.searchParams.get("name")); // 'prakash'
+```
+
+---
+
+#### 2. **`URLSearchParams` Class**
+
+- Allows working with query string parameters in a URL.
+
+**Example:**
+
+```javascript
+const params = new URLSearchParams("name=prakash&age=25");
+
+console.log(params.get("name")); // 'prakash'
+console.log(params.has("age")); // true
+params.append("country", "India");
+console.log(params.toString()); // 'name=prakash&age=25&country=India'
+```
+
+---
+
+#### 3. **Legacy `url.parse()`**
+
+- Parses a URL string into an object containing its parts.
+- **Deprecated** in favor of the `URL` class for most use cases.
+
+**Example:**
+
+```javascript
+const parsedUrl = url.parse(
+  "https://example.com:8000/path/page?name=prakash&age=25#section"
+);
+
+console.log(parsedUrl.protocol); // 'https:'
+console.log(parsedUrl.host); // 'example.com:8000'
+console.log(parsedUrl.pathname); // '/path/page'
+console.log(parsedUrl.query); // 'name=prakash&age=25'
+console.log(parsedUrl.hash); // '#section'
+```
+
+---
+
+#### 4. **`url.format()`**
+
+- Converts a URL object back into a string.
+
+**Example:**
+
+```javascript
+const myUrl = new URL("https://example.com/path");
+myUrl.searchParams.append("name", "prakash");
+myUrl.searchParams.append("age", "25");
+
+console.log(myUrl.toString()); // 'https://example.com/path?name=prakash&age=25'
+```
+
+---
+
+#### 5. **`url.resolve()`**
+
+- Resolves a target URL relative to a base URL.
+- **Deprecated** but still used in older code.
+
+**Example:**
+
+```javascript
+console.log(url.resolve("https://example.com/path/", "page"));
+// 'https://example.com/path/page'
+```
+
+---
+
+### **Practical Uses**
+
+1. **Parsing URLs:**
+   Extract hostname, query parameters, or paths from URLs.
+
+   ```javascript
+   const myUrl = new URL("https://nobroker.com/home?city=Bangalore");
+   console.log(myUrl.searchParams.get("city")); // 'Bangalore'
+   ```
+
+2. **Manipulating Query Strings:**
+   Add, modify, or delete query parameters.
+
+   ```javascript
+   const params = new URLSearchParams("type=backend&level=senior");
+   params.set("type", "frontend");
+   console.log(params.toString()); // 'type=frontend&level=senior'
+   ```
+
+3. **Building URLs Dynamically:**
+   ```javascript
+   const baseUrl = new URL("https://nobroker.com");
+   baseUrl.pathname = "/jobs";
+   baseUrl.searchParams.append("role", "backend");
+   console.log(baseUrl.toString()); // 'https://nobroker.com/jobs?role=backend'
+   ```
