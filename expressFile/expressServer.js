@@ -16,7 +16,7 @@ app.post("/create", async (req, res) => {
     }
     let data = new UserData({
       UserName: name,
-      UserBody: email,
+      UserEmail: email,
     });
 
     await data.save();
@@ -30,12 +30,15 @@ app.post("/create", async (req, res) => {
 app.put("/update/:id", async (req, res) => {
   try {
     const userId = req.params.id;
+    const email = req.body.UserEmail;
 
-    console.log(userId);
     if (!userId) {
       return res.status(400).json({ Err: "Bad Request" });
     }
-    const userData = await UserData.findById({ _id: userId });
+    const userData = await UserData.findByIdAndUpdate(userId, {
+      UserEmail: email,
+    });
+
     res.status(201).json({ data: userData });
   } catch (error) {
     return res.status(500).json({ error: error });

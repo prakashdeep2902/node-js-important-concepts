@@ -7,7 +7,7 @@ const ObjectId = mongoose.ObjectId;
 const NewSchema = new Schema({
   author: ObjectId,
   UserName: String,
-  UserBody: String,
+  UserEmail: String,
 });
 
 const ModelName = mongoose.model("UserData", NewSchema);
