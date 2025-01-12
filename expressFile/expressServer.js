@@ -27,21 +27,85 @@ app.post("/create", async (req, res) => {
   }
 });
 
+// update
 app.put("/update/:id", async (req, res) => {
   try {
     const userId = req.params.id;
     const email = req.body.UserEmail;
+    const name = req.body.UserName;
 
+    // Validate if user ID is provided
     if (!userId) {
-      return res.status(400).json({ Err: "Bad Request" });
+      return res.status(400).json({ Err: "Bad Request: User ID is missing" });
     }
-    const userData = await UserData.findByIdAndUpdate(userId, {
-      UserEmail: email,
-    });
 
-    res.status(201).json({ data: userData });
+    // Validate if at least one field (email or name) is provided
+    if (!email && !name) {
+      return res
+        .status(400)
+        .json({ Err: "You didn't provide fields to update" });
+    }
+
+    // Query the database for the document
+    const DbData = await UserData.findById(userId);
+
+    if (!DbData) {
+      return res.status(404).json({ Err: "Data not found in the database" });
+    }
+
+    // Update both fields if they exist
+    if (email) {
+      DbData.UserEmail = email;
+    }
+    if (name) {
+      DbData.UserName = name;
+    }
+
+    // Save the changes
+    const updatedData = await DbData.save();
+
+    // Send the updated data as the response
+    res.status(200).json({ data: updatedData });
   } catch (error) {
-    return res.status(500).json({ error: error });
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+app.get("/read/:name", async (req, res) => {
+  try {
+    const NameToread = req.params.name;
+
+    console.log(NameToread);
+    if (!NameToread) {
+      return res.status(400).json({ Err: "Bad Request: User ID is missing" });
+    }
+    const fetchedData = await UserData.findOne({ UserName: NameToread });
+    if (!fetchedData) {
+      return res.status(404).json({ Err: "Data not found in the database" });
+    }
+
+    res.status(200).json({ data: fetchedData });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+app.delete("/read/:name", async (req, res) => {
+  try {
+    const NameToread = req.params.name;
+
+    console.log(NameToread);
+    if (!NameToread) {
+      return res.status(400).json({ Err: "Bad Request: User ID is missing" });
+    }
+    const fetchedData = await UserData.find({ UserName: NameToread });
+    if (!fetchedData) {
+      return res.status(404).json({ Err: "Data not found in the database" });
+    }
+
+    const deletedData = fetchedData.res.status(200).json({ data: fetchedData });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
 });
 
